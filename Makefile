@@ -1,7 +1,5 @@
 NAMEC = client
 NAMES = server
-BONUS_NAMEC = client_bonus
-BONUS_NAMES = server_bonus
 PRINTF = libftprintf.a
 SRCC_FILES =	client.c
 SRCS_FILES =	server.c
