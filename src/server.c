@@ -1,6 +1,6 @@
 #include "../include/minitalk.h"
 
-void	ft_btoa(int sig)
+void	SigHandler(int sig)
 {
 	static int	bit;
 	static int	i;
@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 	ft_printf("%d\n", pid);
 	while (argc == 1)
 	{
-		signal(SIGUSR1, ft_btoa);
-		signal(SIGUSR2, ft_btoa);
+		signal(SIGUSR1, SigHandler);
+		signal(SIGUSR2, SigHandler);
 		pause ();
 	}
 	return (0);
