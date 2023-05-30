@@ -2,17 +2,21 @@
 
 void	SigHandler(int sig)
 {
-	static int	bit;
-	static int	i;
+	static int	bit = 0;
+	static int	c = 0;
 
 	if (sig == SIGUSR1)
-		i |= (0x01 << bit);
-	bit++;
+	{
+		c |= (0x01 << bit);
+		bit++;
+	}	
+	else if(sig == SIGUSR2)
+		bit++;
 	if (bit == 8)
 	{
-		ft_printf("%c", i);
+		ft_printf("%c", c);
 		bit = 0;
-		i = 0;
+		c = 0;
 	}
 }
 
