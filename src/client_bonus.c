@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-v <jgomes-v@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:04:27 by jgomes-v          #+#    #+#             */
-/*   Updated: 2023/05/31 16:51:06 by jgomes-v         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:31:40 by jgomes-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include/minitalk_bonus.h"
+
+void	confirm_msg(int signal, siginfo_t *info, void *context)
+{
+	(void)context;
+	(void)info;
+	if (signal == SIGUSR2)
+		ft_printf("message recieved\n");
+}
 
 void	send_signal(int pid, char c)
 {
@@ -28,12 +36,23 @@ void	send_signal(int pid, char c)
 	}
 }
 
+int error()
+{
+	ft_printf("Error\n");
+		return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	int	pid;
-	int	i;
+	struct sigaction	sa;
+	int					pid;
+	int					i;
 
 	i = 0;
+	sigemptyset(&sa.sa_mask);
+	sa.sa_flags = SA_SIGINFO;
+	sa.sa_sigaction = confirm_msg;
+	sigaction(SIGUSR2, &sa, NULL);
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
@@ -46,8 +65,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_printf("Error\n");
-		return (1);
+		error();
 	}
 	send_signal(pid, '\n');
 	return (0);

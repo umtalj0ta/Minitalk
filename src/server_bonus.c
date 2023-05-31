@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-v <jgomes-v@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 12:58:31 by jgomes-v          #+#    #+#             */
-/*   Updated: 2023/05/31 16:50:24 by jgomes-v         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:01:00 by jgomes-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/minitalk.h"
+#include "../include/minitalk_bonus.h"
 #include <signal.h>
 
 void	sig_handler(int sig, siginfo_t *info, void *context)
@@ -29,6 +29,8 @@ void	sig_handler(int sig, siginfo_t *info, void *context)
 		bit++;
 	if (bit == 8)
 	{
+		if (c == '\0')
+			kill(info->si_pid, SIGUSR2);
 		ft_printf("%c", c);
 		bit = 0;
 		c = 0;

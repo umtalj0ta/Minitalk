@@ -1,8 +1,8 @@
 NAME = libftprintf.a
 
-SRC = ft_printf.c ft_auxfun.c 
+SRC = ft_printf.c ft_auxfun.c ft_printhex.c ft_printhex_up.c ft_auxbasic.c ft_printadress.c
 
-OBJS = ${SRC:.c=.o}
+OBJS = ft_printf.o ft_auxfun.o ft_printhex.o ft_printhex_up.o ft_auxbasic.o ft_printadress.o
 
 CC = cc
 RM = rm -f
@@ -28,10 +28,6 @@ clean:
 
 fclean: clean
 		${MAKE} ${LIBFT_PATH} fclean
-		${RM} ${NAME}
-
-bonus: all
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus

@@ -1,29 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_printhex_up.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-v <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/12 11:17:49 by jgomes-v          #+#    #+#             */
-/*   Updated: 2023/04/12 12:23:27 by jgomes-v         ###   ########.fr       */
+/*   Created: 2023/04/29 15:40:53 by jgomes-v          #+#    #+#             */
+/*   Updated: 2023/04/29 15:49:48 by jgomes-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-int	ft_isalnum(int c)
+void	ft_gethexup(unsigned long long n)
 {
-	if ((c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A'
-			&& c <= 'Z'))
-		return (1);
-	return (0);
+	if (n >= 16)
+	{
+		ft_gethexup(n / 16);
+		ft_gethexup(n % 16);
+	}
+	else
+	{
+		if (n <= 9)
+			ft_printchar(n + '0');
+		else
+			ft_printchar(n - 10 + 'A');
+	}
 }
 
-int	main(void)
+int	ft_printhexup(unsigned int n)
 {
-	int	teste;
+	int	len;
 
-	teste = 1;
-	ft_isalnum(teste);
+	len = 0;
+	if (n == 0)
+	{
+		ft_printchar('0');
+		return (1);
+	}
+	else
+	{
+		ft_gethexup(n);
+		len += ft_hex_len(n);
+	}
+	return (len);
 }

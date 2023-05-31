@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   minitalk_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jgomes-v <jgomes-v@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 17:00:47 by jgomes-v          #+#    #+#             */
-/*   Updated: 2023/05/31 17:00:49 by jgomes-v         ###   ########.fr       */
+/*   Created: 2023/05/31 17:00:42 by jgomes-v          #+#    #+#             */
+/*   Updated: 2023/05/31 17:00:44 by jgomes-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 # define _GNU_SOURCE
 
 # include "../printf/ft_printf.h"
