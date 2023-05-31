@@ -6,7 +6,7 @@
 /*   By: jgomes-v <jgomes-v@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:04:27 by jgomes-v          #+#    #+#             */
-/*   Updated: 2023/05/31 17:31:40 by jgomes-v         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:00:07 by jgomes-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,17 @@ void	send_signal(int pid, char c)
 int	error(void)
 {
 	ft_printf("Error\n");
-	return (1);
+	return (-1);
 }
 
 int	main(int argc, char **argv)
 {
 	struct sigaction	sa;
-	int					pid;
+	static int			pid;
 	int					i;
 
-	i = 0;
+	pid = 0;
+	i = -1;
 	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = confirm_msg;
@@ -56,16 +57,15 @@ int	main(int argc, char **argv)
 	if (argc == 3)
 	{
 		pid = ft_atoi(argv[1]);
-		while (argv[2][i] != '\0')
+		while (argv[2][++i] != '\0')
 		{
 			send_signal(pid, argv[2][i]);
-			i++;
 		}
 		send_signal(pid, '\0');
 	}
 	else
 	{
-		error();
+		return (error());
 	}
 	send_signal(pid, '\n');
 	return (0);
