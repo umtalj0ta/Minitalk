@@ -36,10 +36,10 @@ void	send_signal(int pid, char c)
 	}
 }
 
-int error()
+int	error(void)
 {
 	ft_printf("Error\n");
-		return (1);
+	return (1);
 }
 
 int	main(int argc, char **argv)
