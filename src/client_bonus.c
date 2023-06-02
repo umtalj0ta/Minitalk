@@ -6,7 +6,7 @@
 /*   By: jgomes-v <jgomes-v@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 13:04:27 by jgomes-v          #+#    #+#             */
-/*   Updated: 2023/05/31 18:00:07 by jgomes-v         ###   ########.fr       */
+/*   Updated: 2023/06/02 14:11:51 by jgomes-v         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	confirm_msg(int signal, siginfo_t *info, void *context)
 	(void)context;
 	(void)info;
 	if (signal == SIGUSR2)
-		ft_printf("message recieved\n");
+		ft_printf("server got message\n");
 }
 
 void	send_signal(int pid, char c)
